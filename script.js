@@ -6,27 +6,16 @@ const result = document.getElementById("result");
 const btnCross = document.querySelector(".cross-icon");
 const btnSearch = document.querySelector("#btn-search");
 
+// api used-------------------------------->
 const apiURL = "https://api.lyrics.ovh";
 
-// //show function------------------------->
-// function showModal(modal) {
-//   if (modal == null) return;
-//   modal.classList.add("active");
-// }
-
-// //hide modal--------------------->
-// function hideModal(modal) {
-//   if (modal == null) return;
-//   modal.classList.remove("active");
-// }
-
-// adding event listener in form
+// search song list event --------------------------------->
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   let searchValue = search.value.trim();
 
-  // checking seaxch is empty or Not
+  // checking search is empty or Not
 
   if (!searchValue) {
     alert("Enter Song or Artist name");
@@ -36,12 +25,14 @@ form.addEventListener("submit", (e) => {
   }
 });
 
+//search long list event on icon click---------------------------------------------->
+
 btnSearch.addEventListener("click", (e) => {
   console.log("hell");
   const targetElement = e.target;
   let searchValue = search.value.trim();
 
-  // checking seaxch is empty or Not
+  // checking search is empty or Not------------------------->
 
   if (targetElement.tagName === "BUTTON" && !searchValue) {
     alert("Enter Song or Artist name");
@@ -104,14 +95,6 @@ result.addEventListener("click", (e) => {
 //get Lyrics---------------------------------->
 
 async function getLyrics(artist, songTitle) {
-  // console.log("clicked");
-  // $.get(
-  //   "https://api.lyrics.ovh/v1/" + artist + "/" + songTitle,
-  //   function (data) {
-  //     result.innerHTML = data.lyics.replace(new RegExp("\n", "g"), "<br>");
-  //   }
-  // );
-
   const res = await fetch(`${apiURL}/v1/${artist}/${songTitle}`);
   const data = await res.json();
 
@@ -131,6 +114,8 @@ async function getLyrics(artist, songTitle) {
 
 // hide modal cross icon and escape button-------------------------------->
 
+//using cross icon------------------------------------------>
+
 result.addEventListener("click", (e) => {
   const targetEl = e.target;
 
@@ -140,6 +125,7 @@ result.addEventListener("click", (e) => {
   }
 });
 
+//using escape key------------------------------------------>
 document.addEventListener("keydown", function (e) {
   if (e.key === "Escape" && result.classList.contains("active")) {
     //console.log(e.key);
