@@ -43,7 +43,7 @@ btnSearch.addEventListener("click", (e) => {
 
   // checking seaxch is empty or Not
 
-  if (targetElement.tagName === "OBJECT" && !searchValue) {
+  if (targetElement.tagName === "BUTTON" && !searchValue) {
     alert("Enter Song or Artist name");
   } else {
     searchSong(searchValue);
